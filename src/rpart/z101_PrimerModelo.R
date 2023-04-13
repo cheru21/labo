@@ -2,15 +2,18 @@
 #Debe tener instaladas las librerias  data.table  ,  rpart  y  rpart.plot
 
 #cargo las librerias que necesito
-require("data.table")
-require("rpart")
-require("rpart.plot")
+#install.packages("data.table")
+#install.packages("rpart")
+#install.packages("rpart.plot")
+library(data.table)
+library(rpart)
+library(rpart.plot)
 
 #Aqui se debe poner la carpeta de la materia de SU computadora local
-setwd("X:\\gdrive\\austral2023v\\")  #Establezco el Working Directory
+setwd("C:/Users/IMR/Onedrive - profertil.com.ar/MCD/1 Año/Laboratorio de implementacion I/datasets")  #Establezco el Working Directory
 
 #cargo el dataset
-dataset  <- fread("./datasets/dataset_pequeno.csv")
+dataset  <- fread("./dataset_pequeno.csv")
 
 dtrain  <- dataset[ foto_mes==202107 ]  #defino donde voy a entrenar
 dapply  <- dataset[ foto_mes==202109 ]  #defino donde voy a aplicar el modelo
@@ -19,10 +22,10 @@ dapply  <- dataset[ foto_mes==202109 ]  #defino donde voy a aplicar el modelo
 modelo  <- rpart(formula=   "clase_ternaria ~ .",  #quiero predecir clase_ternaria a partir de el resto de las variables
                  data=      dtrain,  #los datos donde voy a entrenar
                  xval=      0,
-                 cp=       -0.3,   #esto significa no limitar la complejidad de los splits
-                 minsplit=  0,     #minima cantidad de registros para que se haga el split
-                 minbucket= 1,     #tamaño minimo de una hoja
-                 maxdepth=  3 )    #profundidad maxima del arbol
+                 cp=       -1,   #esto significa no limitar la complejidad de los splits
+                 minsplit=  900,     #minima cantidad de registros para que se haga el split
+                 minbucket= 300,     #tamaño minimo de una hoja
+                 maxdepth=  10 )    #profundidad maxima del arbol
 
 
 #grafico el arbol

@@ -5,7 +5,7 @@ require("data.table")
 require("rpart")
 require("parallel")
 
-ksemillas  <- c(102191, 200177, 410551, 552581, 892237 ) #reemplazar por las propias semillas
+ksemillas  <- c(800021 , 800029 , 800033 , 800053 , 800057 , 6 , 7 , 8, 9 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18 , 19 ,20) #reemplazar por las propias semillas
 
 #------------------------------------------------------------------------------
 #particionar agrega una columna llamada fold a un dataset que consiste en una particion estratificada segun agrupa
@@ -60,12 +60,10 @@ ArbolEstimarGanancia  <- function( semilla, param_basicos )
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
-#Aqui se debe poner la carpeta de la computadora local
-setwd("X:\\gdrive\\austral2023v\\")   #Establezco el Working Directory
-#cargo los datos
+setwd("C:/Users/IMR/Onedrive - profertil.com.ar/MCD/1 Año/Laboratorio de implementacion I/datasets") #Aqui se debe poner la ruta de la PC local
 
 #cargo los datos
-dataset  <- fread("./datasets/dataset_pequeno.csv")
+dataset  <- fread("./dataset_pequeno.csv")
 
 #trabajo solo con los datos con clase, es decir 202107
 dataset  <- dataset[ clase_ternaria!= "" ]
